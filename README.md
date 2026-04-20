@@ -14,6 +14,7 @@ uv venv
 
 ## Activate the virtual environment
 source .venv/bin/activate  # Linux/macOS
+
 .venv\Scripts\activate   # Windows
 
 ## Install dependencies
