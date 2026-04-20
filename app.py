@@ -15,19 +15,13 @@ model = pickle.load(pkl_in)
 
 @app.post('/predict')
 def predictor(data:BankNote):
-    data = data.dict()
-    var = data['variance']
-    skew = data['skewness']
-    curt = data['curtosis']
-    ent = data['entropy']
+    features = [[data.variance, data.skewness, data.curtosis, data.entropy]]
 
-    res = model.predict([[var,skew,curt,ent]])
-    if res >= 0.5:
-        pred = "Fake Bank Note"
-    else:
-        pred = "Bank Note OK"
+    res = model.predict(features)
+    pred = "Fake Bank Note" if res >= 0.5 else "Bank Note OK"
 
     return {
+        "Result":float(res[0]),
         "prediction":pred,
     }
 
