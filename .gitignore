@@ -4,3 +4,4 @@ uv.lock
 main.py
 pyproject.toml
 uv.lock
+__pycache__/
